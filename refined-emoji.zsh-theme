@@ -76,9 +76,12 @@ precmd() {
     unset cmd_timestamp #Reset cmd exec time.
 }
 
+EMOJI_PATH="$HOME/.local/rand-emoji"
+EMOJI=$("$EMOJI_PATH/rand-emoji" "$EMOJI_PATH/emojis.txt")
+
 # Define prompts
 #
-PROMPT="$($HOME/emoji_gen/rand-emoji $HOME/emoji_gen/emoji-sequences.txt) %(?.%F{magenta}.%F{red})❯%f " # Display a red prompt char on failure
+PROMPT="$EMOJI %(?.%F{magenta}.%F{red})❯%f " # Display a red prompt char on failure
 RPROMPT="%F{8}${SSH_TTY:+%n@%m}%f"    # Display username if connected via SSH
 
 # ------------------------------------------------------------------------------
